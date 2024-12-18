@@ -29,56 +29,56 @@ class LearnTogether : ComponentActivity() {
             LearnTogether()
         }
     }
+}
 
-    @Composable
-    fun LearnTogetherImage(modifier: Modifier = Modifier) {
-        Box(modifier = modifier) {
-            Image(
-                painter = painterResource(id = R.drawable.bg_compose_background),
-                contentDescription = null,
-                contentScale = ContentScale.FillWidth,
-            )
-        }
+@Composable
+fun LearnTogetherImage(modifier: Modifier = Modifier) {
+    Box(modifier = modifier) {
+        Image(
+            painter = painterResource(id = R.drawable.bg_compose_background),
+            contentDescription = null,
+            contentScale = ContentScale.FillWidth,
+        )
     }
+}
 
-    @Composable
-    fun LearnTogetherText(title: String, text: String, text2: String, modifier: Modifier = Modifier) {
-        Column(modifier = Modifier
-            .padding(16.dp)) {
-            Text(
-                text = title,
-                fontSize = 25.sp,
-                color = Color.Black,
-                textAlign = TextAlign.Left,
-                modifier = Modifier.align(Alignment.Start)
-                    .padding(bottom = 16.dp)
-            )
-            Text(
-                text = text,
-                fontSize = 20.sp,
-                color = Color.Black,
-                textAlign = TextAlign.Justify,
-                modifier = Modifier.padding(bottom = 16.dp)
-            )
-            Text(
-                text = text2,
-                fontSize = 20.sp,
-                color = Color.Black,
-                textAlign = TextAlign.Justify
-            )
-        }
+@Composable
+fun LearnTogetherText(title: String, text: String, text2: String, modifier: Modifier = Modifier) {
+    Column(modifier = Modifier
+        .padding(16.dp)) {
+        Text(
+            text = title,
+            fontSize = 25.sp,
+            color = Color.Black,
+            textAlign = TextAlign.Left,
+            modifier = Modifier.align(Alignment.Start)
+                .padding(bottom = 16.dp)
+        )
+        Text(
+            text = text,
+            fontSize = 20.sp,
+            color = Color.Black,
+            textAlign = TextAlign.Justify,
+            modifier = Modifier.padding(bottom = 16.dp)
+        )
+        Text(
+            text = text2,
+            fontSize = 20.sp,
+            color = Color.Black,
+            textAlign = TextAlign.Justify
+        )
     }
+}
 
-    @Preview (showBackground = true, showSystemUi = true)
-    @Composable
-    fun PreviewLearnTogetherImage() {
-        Column {
-            LearnTogetherImage()
-            LearnTogetherText(
-                title = stringResource(R.string.learn_together_title),
-                text = stringResource(R.string.learn_together_text),
-                text2 = stringResource(R.string.learn_together_text2)
-            )
-        }
+@Preview (showBackground = true, showSystemUi = true)
+@Composable
+fun PreviewLearnTogetherImage() {
+    Column {
+        LearnTogetherImage()
+        LearnTogetherText(
+            title = stringResource(R.string.learn_together_title),
+            text = stringResource(R.string.learn_together_text),
+            text2 = stringResource(R.string.learn_together_text2)
+        )
     }
 }
