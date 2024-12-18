@@ -14,6 +14,9 @@
       <SelectionState runConfigName="QuadrantesComposePreview">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
+      <SelectionState runConfigName="CartaoDeVisitas">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
     </selectionStates>
   </component>
 </project>

@@ -1,4 +1,4 @@
-package br.com.app.src.main.kotlin.com.greetingcard
+package br.com.app.src.main.kotlin.com.basicAndroidKotlinCompose
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -7,7 +7,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
@@ -18,6 +17,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import br.com.app.src.main.kotlin.com.greetingcard.R
 
 class TaskManager : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Happy Birthday Card</string>
+    <string name="app_name">Basic Android Kotlin Compose</string>
     <string name="happy_birthday_text">Happy Birthday Sam!</string>
     <string name="signature_text">From, John Doe</string>
     <string name="learn_together_title">Jetpack Compose tutorial</string>

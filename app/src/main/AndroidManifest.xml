@@ -12,17 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HappyBirthdayCard"
         tools:targetApi="31">
-        <activity
-            android:name=".MainActivity"
+
+        <activity android:name="br.com.app.src.main.kotlin.com.basicAndroidKotlinCompose.CartaoDeVisitas"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.HappyBirthdayCard">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
+        <activity android:name="br.com.app.src.main.kotlin.com.basicAndroidKotlinCompose.WebViewActivity" />
     </application>
 
 </manifest>

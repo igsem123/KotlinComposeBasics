@@ -1,4 +1,4 @@
-package br.com.app.src.main.kotlin.com.greetingcard
+package br.com.app.src.main.kotlin.com.basicAndroidKotlinCompose
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -20,6 +20,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import br.com.app.src.main.kotlin.com.greetingcard.R
 
 class LearnTogether : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
