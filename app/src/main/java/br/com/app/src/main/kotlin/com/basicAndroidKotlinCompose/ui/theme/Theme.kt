@@ -1,6 +1,5 @@
-package br.com.app.src.main.kotlin.com.greetingcard.ui.theme
+package br.com.app.src.main.kotlin.com.basicAndroidKotlinCompose.ui.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme

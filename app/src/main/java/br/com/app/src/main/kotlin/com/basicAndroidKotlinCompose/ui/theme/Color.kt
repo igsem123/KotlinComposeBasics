@@ -1,4 +1,4 @@
-package br.com.app.src.main.kotlin.com.greetingcard.ui.theme
+package br.com.app.src.main.kotlin.com.basicAndroidKotlinCompose.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

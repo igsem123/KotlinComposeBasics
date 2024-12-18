@@ -9,7 +9,7 @@ android {
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "br.com.app.src.main.kotlin.com.greetingcard"
+        applicationId = "br.com.app.src.main.kotlin.com.basicAndroidKotlinCompose"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -57,4 +57,5 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    implementation("br.com.devsrsouza.compose.icons:font-awesome:1.1.1")
 }

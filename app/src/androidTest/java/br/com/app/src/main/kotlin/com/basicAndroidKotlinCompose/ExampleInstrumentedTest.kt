@@ -1,4 +1,4 @@
-package br.com.app.src.main.kotlin.com.greetingcard
+package br.com.app.src.main.kotlin.com.basicAndroidKotlinCompose
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
