@@ -147,16 +147,15 @@ private fun Header(modifier: Modifier, expanded: Boolean = false) {
         contentAlignment = Alignment.Center
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            if (rotation <= 90f || rotation >= 270f) {
-                Box(
-                    modifier = Modifier
-                        .clip(CircleShape)
-                        .shadow(15.dp)
-                        .graphicsLayer {
-                            rotationY = rotation
-                            cameraDistance = 25f * density
-                        }
-                ) {
+            Box(
+                modifier = Modifier
+                    .clip(CircleShape)
+                    .graphicsLayer {
+                        rotationY = rotation
+                        cameraDistance = 25f * density
+                    }
+            ) {
+                if (rotation <= 90f || rotation >= 270f) {
                     Image(
                         painter = imagemDaFrente,
                         contentDescription = null,
@@ -166,17 +165,7 @@ private fun Header(modifier: Modifier, expanded: Boolean = false) {
                             .padding(16.dp),
                         alignment = Alignment.Center
                     )
-                }
-            } else {
-                Box(
-                    modifier = Modifier
-                        .clip(CircleShape)
-                        .shadow(15.dp)
-                        .graphicsLayer {
-                            rotationY = rotation
-                            cameraDistance = 25f * density
-                        }
-                ) {
+                } else {
                     Image(
                         painter = imagemDeVerso,
                         contentDescription = null,
