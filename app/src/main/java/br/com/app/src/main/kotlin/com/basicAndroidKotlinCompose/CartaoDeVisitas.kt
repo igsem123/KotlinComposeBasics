@@ -147,16 +147,16 @@ private fun Header(modifier: Modifier, expanded: Boolean = false) {
         contentAlignment = Alignment.Center
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            Box(
-                modifier = Modifier
-                    .clip(CircleShape)
-                    .shadow(15.dp)
-                    .graphicsLayer {
-                        rotationY = rotation
-                        cameraDistance = 25f * density
-                    }
-            ) {
-                if (rotation <= 90f || rotation >= 270f) {
+            if (rotation <= 90f || rotation >= 270f) {
+                Box(
+                    modifier = Modifier
+                        .clip(CircleShape)
+                        .shadow(15.dp)
+                        .graphicsLayer {
+                            rotationY = rotation
+                            cameraDistance = 25f * density
+                        }
+                ) {
                     Image(
                         painter = imagemDaFrente,
                         contentDescription = null,
@@ -166,12 +166,21 @@ private fun Header(modifier: Modifier, expanded: Boolean = false) {
                             .padding(16.dp),
                         alignment = Alignment.Center
                     )
-                } else {
+                }
+            } else {
+                Box(
+                    modifier = Modifier
+                        .clip(CircleShape)
+                        .shadow(15.dp)
+                        .graphicsLayer {
+                            rotationY = rotation
+                            cameraDistance = 25f * density
+                        }
+                ) {
                     Image(
                         painter = imagemDeVerso,
                         contentDescription = null,
                         modifier = Modifier
-                            .background(Color(0xFF5F9EA0))
                             .size(175.dp)
                             .clip(CircleShape)
                             .graphicsLayer(scaleX = -1f),
