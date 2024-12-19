@@ -158,7 +158,7 @@ private fun Header(modifier: Modifier, expanded: Boolean = false) {
                 if (rotation <= 90f || rotation >= 270f) {
                     Image(
                         painter = imagemDaFrente,
-                        contentDescription = null,
+                        contentDescription = "Imagem com a logo do Android",
                         modifier = Modifier
                             .background(Color(0xFF5F9EA0))
                             .size(175.dp)
@@ -168,7 +168,7 @@ private fun Header(modifier: Modifier, expanded: Boolean = false) {
                 } else {
                     Image(
                         painter = imagemDeVerso,
-                        contentDescription = null,
+                        contentDescription = "Avatar do desenvolvedor",
                         modifier = Modifier
                             .size(175.dp)
                             .clip(CircleShape)
