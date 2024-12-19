@@ -7,9 +7,13 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.core.LinearOutSlowInEasing
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -22,6 +26,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -31,11 +36,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.drawWithCache
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -50,7 +55,6 @@ import compose.icons.fontawesomeicons.Brands
 import compose.icons.fontawesomeicons.brands.Github
 import compose.icons.fontawesomeicons.brands.Linkedin
 import compose.icons.fontawesomeicons.brands.Telegram
-import kotlin.math.exp
 
 class CartaoDeVisitas : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -80,11 +84,12 @@ private fun CartaoDeVisitasContent() {
                 )
                 .padding(16.dp)
                 .fillMaxHeight()
-                .clickable { expanded = !expanded }
+                .clickable(indication = null, interactionSource = remember { MutableInteractionSource() }) { expanded = !expanded }
         ) {
-            Header(
+            Header (
                 modifier = Modifier
-                    .fillMaxWidth()
+                    .fillMaxWidth(),
+                expanded = expanded
             )
             AnimatedVisibility(expanded) {
                 Column { // Column para adicionar os ícones das redes sociais
@@ -127,30 +132,57 @@ private fun CartaoDeVisitasContent() {
 }
 
 @Composable
-private fun Header(modifier: Modifier) {
-    Box(modifier = modifier.wrapContentHeight(), contentAlignment = Alignment.Center) {
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Box (
-                Modifier
-                .clip(CircleShape)
-                .shadow(15.dp)
+private fun Header(modifier: Modifier, expanded: Boolean = false) {
+    val rotation by animateFloatAsState(
+        targetValue = if (expanded) 180f else 0f,
+        animationSpec = tween(durationMillis = 1000, easing = LinearOutSlowInEasing),
+        label = "FloatAnimation"
+    )
+
+    val imagemDaFrente = painterResource(id = R.drawable.android_logo)
+    val imagemDeVerso = painterResource(id = R.drawable.avatar)
+
+    Box(
+        modifier = modifier.wrapContentHeight(),
+        contentAlignment = Alignment.Center
+    ) {
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            Box(
+                modifier = Modifier
+                    .clip(CircleShape)
+                    .graphicsLayer {
+                        rotationY = rotation
+                        cameraDistance = 25f * density
+                    }
             ) {
-                Image(
-                    painter = painterResource(id = R.drawable.android_logo),
-                    contentDescription = null,
-                    modifier = Modifier
-                        .background(Color(0xFF5F9EA0))
-                        .size(175.dp)
-                        .padding(16.dp),
-                    alignment = Alignment.Center
-                )
+                if (rotation <= 90f || rotation >= 270f) {
+                    Image(
+                        painter = imagemDaFrente,
+                        contentDescription = "Imagem com a logo do Android",
+                        modifier = Modifier
+                            .background(Color(0xFF5F9EA0))
+                            .size(175.dp)
+                            .padding(16.dp),
+                        alignment = Alignment.Center
+                    )
+                } else {
+                    Image(
+                        painter = imagemDeVerso,
+                        contentDescription = "Avatar do desenvolvedor",
+                        modifier = Modifier
+                            .size(175.dp)
+                            .clip(CircleShape)
+                            .graphicsLayer(scaleX = -1f),
+                        alignment = Alignment.Center,
+                    )
+                }
             }
-            Row (modifier = Modifier.padding(top = 16.dp)) {
+
+            Row(modifier = Modifier.padding(top = 16.dp)) {
                 Text(
                     text = "Raphael Nathan Moreira",
                     fontSize = 25.sp,
+                    style = MaterialTheme.typography.headlineMedium,
                     fontWeight = FontWeight.SemiBold,
                     color = Color.White,
                     textAlign = TextAlign.Center,
@@ -164,6 +196,7 @@ private fun Header(modifier: Modifier) {
                     text = "Desenvolvedor Mobile",
                     fontSize = 20.sp,
                     color = Color.White,
+                    style = MaterialTheme.typography.bodyMedium,
                     textAlign = TextAlign.Center,
                     modifier = Modifier
                         .padding(bottom = 16.dp)
@@ -176,7 +209,7 @@ private fun Header(modifier: Modifier) {
 
 @Composable
 private fun SocialNetworks(modifier: Modifier = Modifier, socialNetworks: String, url: String, icon: ImageVector ?= null, painter: Int ?= null, color: Color) {
-    val context = LocalContext.current // obtém o contexto atual
+    val context = LocalContext.current // Obtém o contexto atual
     Box (modifier = modifier,
         contentAlignment = Alignment.Center) { // Box para centralizar o conteúdo
         Row(
